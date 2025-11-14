@@ -1,0 +1,14 @@
+apiVersion: krew.googlecontainertools.github.com/v1alpha2
+kind: Plugin
+metadata:
+  name: replay
+spec:
+  version: "v0.1.0"
+  platforms:
+  - selector:
+      matchLabels:
+        os: linux
+        arch: amd64
+    uri: https://github.com/martencassel/kubectl-replay/releases/download/v0.1.0/kubectl-replay_linux_amd64.tar.gz
+    sha256: "<checksum>"
+    bin: kubectl-replay

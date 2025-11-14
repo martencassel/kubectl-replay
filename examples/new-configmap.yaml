@@ -1,0 +1,7 @@
+# Missing configmap example
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: new-configmap
+data:
+  key: value
