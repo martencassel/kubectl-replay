@@ -36,6 +36,14 @@ Install via krew:
 kubectl krew install replay
 ```
 
+Or download the latest release from our repository:
+```bash
+# Download the latest dist file
+wget https://github.com/martencassel/kubectl-replay/releases/download/latest/kubectl-replay_v0.1.0_linux_amd64.tar.gz
+tar -xzf kubectl-replay_v0.1.0_linux_amd64.tar.gz
+sudo mv kubectl-replay /usr/local/bin/
+```
+
 Or build from source:
 ```bash
 git clone https://github.com/martencassel/kubectl-replay.git
@@ -107,10 +115,10 @@ The `examples/` directory includes a complete kind setup with audit logging enab
    ```bash
    # Try to get a non-existent configmap (generates 404)
    kubectl get configmap foobar -n default
-   
+
    # Create a configmap (generates 201)
    kubectl create configmap myconfig --from-literal=key=value -n default
-   
+
    # Try to access forbidden resource (generates 403)
    kubectl get secrets -n kube-system --as=system:unauthenticated
    ```
@@ -119,10 +127,10 @@ The `examples/` directory includes a complete kind setup with audit logging enab
    ```bash
    # [10:15:23] GET /api/v1/namespaces/default/configmaps/foobar → 404 configmaps "foobar" not found
    kubectl get configmaps foobar -n default
-   
+
    # [10:15:45] POST /api/v1/namespaces/default/configmaps → 201 Created
    kubectl create configmaps myconfig -n default
-   
+
    # [10:16:02] GET /api/v1/namespaces/kube-system/secrets → 403 Forbidden
    kubectl get secrets -n kube-system
    ```
